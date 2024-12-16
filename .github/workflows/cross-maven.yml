@@ -70,14 +70,11 @@ jobs:
         run: ./server/mvnw clean install -f core/pom.xml -DskipTests -DskipITs -Dformat.formatter.goal=validate -Dformat.imports.goal=check -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
       - name: Maven build Debezium Server
         run: ./server/mvnw clean install -fae -f server/pom.xml -Passembly -Dformat.formatter.goal=validate -Dformat.imports.goal=check -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120 -DskipNonCore
-<<<<<<< HEAD
       - name: Archive Debezium distribution
         uses: actions/upload-artifact@v4
         with:
           name: debezium-dist-artifact
           path: ./server/debezium-server-dist/target/debezium-server-dist*.tar.gz
-=======
->>>>>>> b75af1b (DBZ-3226: Add step to verify the Debezium-server distribution)
 
   validate-distribution:
     name: Verify debezium-server distribution
