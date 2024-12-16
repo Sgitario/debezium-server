@@ -118,7 +118,7 @@ jobs:
           docker run --name server-$SINK -d -v $DISTRIBUTION_FOLDER:/opt:z -p 8080:8080 --network debezium-backend -w /opt registry.access.redhat.com/ubi8/openjdk-21 ./run.sh
           timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/q/health)" != "200" ]]; do sleep 5; done' || false
       - name: Print logs
-        if: failure()
+        if: always()
         run: |
           echo "Logs from dependant services:"
           docker compose -f ./server/debezium-server-dist/src/test/resources/${{matrix.sink}}/docker-compose.yml logs
