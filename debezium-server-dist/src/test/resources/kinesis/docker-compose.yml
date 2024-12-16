@@ -17,6 +17,7 @@ services:
       - "4510-4559:4510-4559"  # external services port range
     networks:
       - backend
+
 networks:
   backend:
     name: debezium-backend
